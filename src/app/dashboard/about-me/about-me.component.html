@@ -1,3 +1,10 @@
-<p *ngFor="let item of team$ | async">
-  {{ item.description }}
-</p>
+<div class="container">
+  <p class="fs-2">About Me</p>
+  <div class="row">
+    <div class="col-md-6">
+      <p *ngFor="let item of team$ | async">
+        {{ item.description }}
+      </p>
+    </div>
+  </div>
+</div>
