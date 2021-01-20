@@ -1,7 +1,10 @@
 <div class="container">
-  <p class="fs-2">About Me</p>
+  <p class="fs-2 text-center fw-bold mt-5">About Me</p>
+  <div class="text-center styling">
+    <i class="bi bi-star-fill"></i>
+  </div>
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-6 fs-6 mt-3 lh-base">
       <p *ngFor="let item of team$ | async">
         {{ item.description }}
       </p>

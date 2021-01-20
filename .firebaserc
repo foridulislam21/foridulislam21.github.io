@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "my-portfolio-page-89d9f": {
+      "hosting": {
+        "my-portfolio-pages": [
+          "my-portfolio-page-89d9f"
+        ]
+      }
+    }
+  }
+}
