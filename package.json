@@ -8,7 +8,6 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "api": "json-server src/app/shared/api/db.json --routes src/app/shared/api/routes.json --no-cors=true",
     "deploy:gh": "ng build --prod --base-href=https://foridulislam21.github.io/ && ngh --dir dist/my-portfolio-pages --no-silent"
   },
   "private": true,

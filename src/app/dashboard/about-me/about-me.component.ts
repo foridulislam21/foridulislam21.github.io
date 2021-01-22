@@ -1,17 +1,24 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-
+import { AboutService } from '../../shared/services/about.service';
+import { About } from '../../shared/models/about';
+import { map } from 'rxjs/operators';
 @Component({
   selector: 'app-about-me',
   templateUrl: './about-me.component.html',
   styleUrls: ['./about-me.component.scss'],
 })
 export class AboutMeComponent implements OnInit {
-  team$: Observable<any> = this.http.get('/api/about');
-  constructor(private http: HttpClient) {}
+  abouts: About[];
+  constructor(private aboutService: AboutService) {}
 
   ngOnInit(): void {
-    this.team$;
+    this.aboutService.getAboutList().subscribe((data) => {
+      this.abouts = data.map((e) => {
+        return {
+          id: e.payload.doc.id,
+          ...e.payload.doc.data() as object
+        } as About;
+      });
+    });
   }
 }

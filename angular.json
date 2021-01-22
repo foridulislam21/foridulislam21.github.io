@@ -91,8 +91,7 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "my-portfolio-pages:build",
-            "proxyConfig": "proxy.conf.json"
+            "browserTarget": "my-portfolio-pages:build"
           },
           "configurations": {
             "production": {
