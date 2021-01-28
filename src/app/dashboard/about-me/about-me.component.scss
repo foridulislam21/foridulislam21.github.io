@@ -1,0 +1,28 @@
+.styling::before,
+.styling::after {
+  display: inline-block;
+  content: "";
+  border-top: .3rem solid rgb(0, 0, 0);
+  width: 6rem;
+  margin: 0 0.3rem;
+  transform: translateY(-0rem);
+}
+.bio {
+  margin-top: 50px;
+  box-sizing: border-box;
+  background: #18bc9c;
+  padding-bottom: 10px;
+}
+.projects {
+  box-sizing: border-box;
+  background: #18bc9c;
+}
+.star::before,
+.star::after {
+  display: inline-block;
+  content: "";
+  border-top: .3rem solid white;
+  width: 6rem;
+  margin: 0 0.3rem;
+  transform: translateY(-0rem);
+}

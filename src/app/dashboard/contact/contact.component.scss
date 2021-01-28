@@ -1,0 +1,9 @@
+.styling::before,
+.styling::after {
+  display: inline-block;
+  content: "";
+  border-top: .3rem solid rgb(0, 0, 0);
+  width: 6rem;
+  margin: 0 0.3rem;
+  transform: translateY(-0rem);
+}

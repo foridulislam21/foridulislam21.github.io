@@ -10,16 +10,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AboutMeComponent } from './dashboard/about-me/about-me.component';
 import { HomeComponent } from './dashboard/home/home.component';
-import { NavbarComponent } from './dashboard/navbar/navbar.component';
-import { PicturePageComponent } from './dashboard/picture-page/picture-page.component';
+import { SharedModule } from './shared/shared.module';
+import { ContactComponent } from './dashboard/contact/contact.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    NavbarComponent,
-    PicturePageComponent,
     AboutMeComponent,
+    ContactComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,6 +27,7 @@ import { PicturePageComponent } from './dashboard/picture-page/picture-page.comp
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
+    SharedModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
