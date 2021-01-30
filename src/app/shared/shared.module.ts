@@ -1,10 +1,13 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MaterialComponentModule } from './material-component/material-component.module';
+import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+
+import { AngularMaterialModule } from './angular-material/angular-material.module';
+import { TextInputComponent } from './components/text-input/text-input.component';
 
 @NgModule({
-  declarations: [],
-  imports: [CommonModule, MaterialComponentModule],
-  exports: [MaterialComponentModule],
+  declarations: [TextInputComponent],
+  imports: [CommonModule, AngularMaterialModule, ReactiveFormsModule],
+  exports: [AngularMaterialModule, ReactiveFormsModule],
 })
 export class SharedModule {}
