@@ -12,6 +12,8 @@ import { AppComponent } from './app.component';
 import { AboutMeComponent } from './dashboard/about-me/about-me.component';
 import { ContactComponent } from './dashboard/contact/contact.component';
 import { HomeComponent } from './dashboard/home/home.component';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { HomeComponent } from './dashboard/home/home.component';
     BrowserAnimationsModule,
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule,
+    AngularFirestoreModule,
     AngularFireDatabaseModule,
     SharedModule,
   ],

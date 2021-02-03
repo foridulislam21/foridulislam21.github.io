@@ -6,57 +6,15 @@
   <div class="row">
     <div class="col-md-6 offset-md-3 mt-5">
       <form [formGroup]="FormData" (ngSubmit)="sendMessage(FormData.value)">
-        <div class="form-group">
-          <label for="fullname">Full Name</label>
-          <input
-            type="text"
-            class="form-control"
-            name="fullname"
-            placeholder="Full Name"
-            formControlName="fullname"
-          />
-          <span
-            class="text-danger"
-            *ngIf="
-              FormData.get('fullname').invalid &&
-              FormData.get('fullname').touched &&
-              FormData.get('fullname').errors['required']
-            "
-          >
-            Name is required.
-          </span>
-        </div>
-        <div class="form-group">
-          <label for="Email">Email Address</label>
-          <input
-            type="email"
-            class="form-control"
-            name="email"
-            aria-describedby="emailHelp"
-            placeholder="Enter email"
-            formControlName="email"
-          />
-          <span
-            class="text-danger"
-            *ngIf="
-              FormData.get('email').invalid &&
-              FormData.get('email').touched &&
-              FormData.get('email').errors['required']
-            "
-          >
-            Email address required.
-          </span>
-          <span
-            class="text-danger"
-            *ngIf="
-              FormData.get('email').invalid &&
-              FormData.get('email').touched &&
-              FormData.get('email').errors['pattern']
-            "
-          >
-            Email address is not valid.
-          </span>
-        </div>
+        <app-text-input
+          formControlName="fullName"
+          [label]="'Full Name'"
+        ></app-text-input>
+        <app-text-input
+          formControlName="email"
+          [label]="'Email Address'"
+          [type]="'email'"
+        ></app-text-input>
         <div class="form-group">
           <label for="fullname">Company Name</label>
           <input

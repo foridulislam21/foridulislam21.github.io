@@ -2,17 +2,14 @@
   <label for="{{ label }}">{{ label }}</label>
   <input
     [ngClass]="
-      controlDir &&
-      controlDir.control &&
-      controlDir.control.valid &&
-      controlDir.control.touched
+      controlDir && controlDir.control && controlDir.control.touched
         ? !controlDir.control.valid
           ? 'is-invalid'
           : 'is-valid'
         : null
     "
     [type]="type"
-    (input)="onChange($event.taget.value)"
+    (input)="onChange($event.target.value)"
     (blur)="onTouched()"
     id="{{ label }}"
     #input
@@ -24,15 +21,13 @@
     *ngIf="
       controlDir &&
       controlDir.control &&
-      controlDir.control.valid &&
+      !controlDir.control.valid &&
       controlDir.control.touched
     "
   >
     <span *ngIf="controlDir.control.errors?.required"
       >{{ label }} is required.</span
     >
-    <span *ngIf="controlDir.control.errors?.pattern"
-      >Invalid email address</span
-    >
+    <span *ngIf="controlDir.control.errors?.pattern">Invalid {{ label }}</span>
   </div>
 </div>

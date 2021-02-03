@@ -1,10 +1,17 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { AboutMeComponent } from './dashboard/about-me/about-me.component';
-import { HomeComponent } from './dashboard/home/home.component';
-import { AboutService } from './shared/services/about.service';
+import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [{ path: '', component: AboutMeComponent }];
+import { AboutMeComponent } from './dashboard/about-me/about-me.component';
+
+const routes: Routes = [
+  { path: '', component: AboutMeComponent },
+  {
+    path: 'master-admin',
+    loadChildren: () =>
+      import('../app/admin/admin.module').then((mod) => mod.AdminModule),
+  },
+  { path: '**', redirectTo: '', pathMatch: 'full' },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

@@ -24,18 +24,19 @@ export class ContactComponent implements OnInit {
 
   ngOnInit(): void {
     this.FormData = this.builder.group({
-      fullname: new FormControl('', [Validators.required]),
+      fullName: new FormControl('', [Validators.required]),
       email: new FormControl('', [
-        Validators.compose([Validators.required, Validators.pattern('^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$')]),
+        Validators.required,
+        Validators.pattern('^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$'),
       ]),
       company: new FormControl(''),
       message: new FormControl('', [Validators.required]),
     });
   }
   sendMessage(FormData) {
-    console.log(FormData);
-    this.snackBar.open('Contact form is under construction!', 'ok', {
-      duration: 500,
+    this.contactService.PostMessage(FormData);
+    this.snackBar.open('Message Send Successfully.', 'ok', {
+      duration: 5000,
     });
     this.FormData.reset();
   }
