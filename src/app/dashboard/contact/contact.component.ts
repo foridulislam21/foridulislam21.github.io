@@ -1,3 +1,4 @@
+import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
@@ -15,7 +16,7 @@ import { ContactService } from '../../shared/services/contact.service';
 })
 export class ContactComponent implements OnInit {
   FormData: FormGroup;
-
+  message: Message;
   constructor(
     private builder: FormBuilder,
     private contactService: ContactService,
@@ -31,6 +32,8 @@ export class ContactComponent implements OnInit {
       ]),
       company: new FormControl(''),
       message: new FormControl('', [Validators.required]),
+      // tslint:disable-next-line: new-parens
+      sendTime: new Date(),
     });
   }
   sendMessage(FormData) {

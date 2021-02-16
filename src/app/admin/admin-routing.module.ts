@@ -6,11 +6,12 @@ import { RegisterComponent } from '../admin/auth/register/register.component';
 import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from './auth/verify-email/verify-email.component';
 import { AdminComponent } from './admin.component';
+import { AuthGuard } from '../shared/guards/auth.guard';
 export const routes: Routes = [
-  { path: '', redirectTo: '/sign-in', pathMatch: 'full' },
-  { path: 'sign-in', component: LoginComponent },
+  // { path: '**', redirectTo: 'sign-in', pathMatch: 'full' },
+  { path: '', component: LoginComponent },
   { path: 'sign-up', component: RegisterComponent },
-  { path: 'admin-panel', component: AdminComponent },
+  { path: 'admin-panel', component: AdminComponent, canActivate: [AuthGuard] },
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'verify-email-address', component: VerifyEmailComponent },
 ];

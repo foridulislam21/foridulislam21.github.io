@@ -7,15 +7,20 @@
   margin: 0 0.3rem;
   transform: translateY(-0rem);
 }
+
 .bio {
   box-sizing: border-box;
-  background: #18bc9c;
+  background-color: #0093E9;
+  background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+
   padding-bottom: 10px;
 }
+
 .projects {
   box-sizing: border-box;
   background: #18bc9c;
 }
+
 .star::before,
 .star::after {
   display: inline-block;
@@ -24,4 +29,12 @@
   width: 6rem;
   margin: 0 0.3rem;
   transform: translateY(-0rem);
+}
+@media only screen and(max-width: 768px){
+  .list-icon{
+    display: flex;
+  }
+  .name-full{
+    font-size: medium;
+  }
 }

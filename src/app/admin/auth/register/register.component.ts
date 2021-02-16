@@ -33,20 +33,9 @@ export class RegisterComponent implements OnInit {
       ]),
     });
   }
-  register(FormData) {
-    this.authService
-      .signIn(FormData.email, FormData.password)
-      .then(() => {
-        this.snackBar.open('You have successfully registared', 'Ok', {
-          duration: 5000,
-        });
-        this.FormData.reset();
-      })
-      .catch((error) => {
-        this.snackBar.open(error.message, 'Ok', {
-          duration: 5000,
-        });
-        this.FormData.reset();
-      });
+  register(data: any) {
+    console.log(data);
+    this.authService.signUp(data.email, data.password);
+    this.FormData.reset();
   }
 }

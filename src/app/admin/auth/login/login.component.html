@@ -1,1 +1,75 @@
-<p>login works!</p>
+<div class="backColor row">
+  <div class="col-md-5 offset-md-5">
+    <mat-card class="example-card mt-5">
+      <p class="text-center fw-bold fs-3">Sign In</p>
+      <div class="d-flex justify-content-center">
+        <img
+          class="justify-content-center"
+          mat-card-sm-image
+          src="assets/login-img (1).png"
+          alt="Logo"
+          srcset=""
+        />
+      </div>
+      <mat-card-content>
+        <form
+          [formGroup]="FormData"
+          class=""
+          (ngSubmit)="logIn(FormData.value)"
+        >
+          <app-text-input
+            formControlName="email"
+            [label]="'Email Address'"
+            [type]="'email'"
+          ></app-text-input>
+          <app-text-input
+            matTooltip="Password must be one lower case letter, one upper case letter, one digit, 6-13 length, and no spaces."
+            [matTooltipPosition]="'above'"
+            formControlName="password"
+            [label]="'Password'"
+            [type]="'password'"
+          ></app-text-input>
+          <div class="row">
+            <button
+              class="d-grid col-11 mx-auto"
+              [disabled]="!FormData.valid"
+              mat-raised-button
+              color="accent"
+            >
+              Sign In
+            </button>
+          </div>
+        </form>
+      </mat-card-content>
+      <div class="form-group text-center">
+        <span class="text-nowrap">Or</span>
+      </div>
+      <div class="form-group">
+        <div class="row d-flex">
+          <button
+            class="d-grid col-11 mx-auto justify-content-start"
+            mat-raised-button
+            color="primary"
+          >
+            <i class="bi bi-google mr-5"></i>
+            Continue with Google
+          </button>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="row">
+          <button
+            class="d-grid col-11 mx-auto justify-content-start"
+            mat-raised-button
+            color="primary"
+          >
+            <i class="bi bi-facebook mr-5"></i>Continue with Facebook
+          </button>
+        </div>
+      </div>
+      <div class="form-group">
+        <span class="">Don't have an account??<a class="ml-2" routerLink="/master-admin/sign-up">Sign Up</a></span>
+      </div>
+    </mat-card>
+  </div>
+</div>

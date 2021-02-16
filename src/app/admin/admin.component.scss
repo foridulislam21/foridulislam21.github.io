@@ -1,0 +1,42 @@
+.example-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.example-toolbar {
+  position: fixed;
+  /* Make sure the toolbar will stay on top of the content as it scrolls past. */
+  z-index: 2;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.example-header-image {
+  background-image: url('../../assets/user-profile-avatar.jpg');
+  background-size: cover;
+}
+
+.dashboard {
+  display: block;
+}
+.card-design{
+  position: relative;
+  flex: 1 0 auto;
+}
+
+@media only screen and (max-width: 768px) {
+  /* Here are some changes*/
+  .dashboard{
+    display: none;
+  }
+  .card-design{
+    display: none;
+  }
+}

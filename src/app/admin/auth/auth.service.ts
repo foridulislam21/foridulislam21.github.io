@@ -14,7 +14,8 @@ import { User } from '../../shared/models/user';
 })
 export class AuthService {
   userData: any;
-
+  // tslint:disable-next-line: no-inferrable-types
+  loadSpinner: boolean = true;
   constructor(
     private db: AngularFirestore,
     private afAuth: AngularFireAuth,
@@ -29,10 +30,12 @@ export class AuthService {
         this.userData = user;
         localStorage.setItem('user', JSON.stringify(this.userData));
         JSON.parse(localStorage.getItem('user'));
+        this.router.navigateByUrl('/master-admin/admin-panel');
       } else {
         localStorage.setItem('user', null);
         JSON.parse(localStorage.getItem('user'));
       }
+      this.loadSpinner = false;
     });
   }
   signUp(email, password) {
@@ -50,7 +53,7 @@ export class AuthService {
   }
   async sendVerificationMail() {
     return (await this.afAuth.currentUser).sendEmailVerification().then(() => {
-      this.router.navigateByUrl('verify-email-address');
+      this.router.navigateByUrl('/master-admin/verify-email-address');
     });
   }
   signIn(email, password) {
@@ -58,7 +61,7 @@ export class AuthService {
       .signInWithEmailAndPassword(email, password)
       .then((result) => {
         this.ngZone.run(() => {
-          this.router.navigateByUrl('admin-panel');
+          this.router.navigateByUrl('/master-admin/admin-panel');
         });
         this.setUserData(result.user);
       })
@@ -71,7 +74,7 @@ export class AuthService {
   /* Setting up user data when sign in with username/password,
   sign up with username/password and sign in with social auth
   provider in Firestore database using AngularFirestore + AngularFirestoreDocument service */
-  setUserData(user) {
+  private setUserData(user) {
     const userRef: AngularFirestoreDocument<any> = this.db.doc(
       `users/${user.uid}`
     );
@@ -90,14 +93,10 @@ export class AuthService {
     return this.afAuth
       .sendPasswordResetEmail(passwordResetemail)
       .then(() => {
-        this.snackBar.open('Please check your mail inbox.', 'Ok', {
-          duration: 5000,
-        });
+        this.snackBar.open('Please check your mail inbox.', 'Ok');
       })
       .catch((error) => {
-        this.snackBar.open(error.message, 'Ok', {
-          duration: 5000,
-        });
+        this.snackBar.open(error.message, 'Ok');
       });
   }
   get isLoggedIn(): boolean {
@@ -107,25 +106,23 @@ export class AuthService {
   async googleAuth() {
     return await this.authLogin(this.googleAuth());
   }
-  authLogin(provider) {
+  private authLogin(provider) {
     return this.afAuth
       .signInWithPopup(provider)
       .then((result) => {
         this.ngZone.run(() => {
-          this.router.navigateByUrl('admin-panel');
+          this.router.navigateByUrl('/master-admin/admin-panel');
         });
         this.setUserData(result.user);
       })
       .catch((error) => {
-        this.snackBar.open(error.message, 'Ok', {
-          duration: 5000,
-        });
+        this.snackBar.open(error.message, 'Ok');
       });
   }
   signOut() {
     return this.afAuth.signOut().then(() => {
       localStorage.removeItem('user');
-      this.router.navigateByUrl('sign-in');
+      this.router.navigateByUrl('/master-admin');
     });
   }
 }

@@ -1,1 +1,40 @@
-<p>verify-email works!</p>
+<div class="backColor row">
+  <div class="col-md-5 offset-md-5">
+    <mat-card class="example-card mt-5">
+      <p class="text-center fw-bold fs-3">Thank You for Registering</p>
+      <mat-card-content>
+        <ng-container *ngIf="authService.userData as user">
+          <mat-card-subtitle>
+            <p>
+              We have sent a confirmation email to
+              <strong>{{ user.email }}</strong
+              >.
+            </p>
+            <p>
+              Please check your email and click on the link to verfiy your email
+              address.
+            </p>
+          </mat-card-subtitle>
+        </ng-container>
+      </mat-card-content>
+      <div class="row">
+        <button
+          (click)="authService.sendVerificationMail()"
+          class="d-grid col-11 mx-auto"
+          mat-raised-button
+          color="accent"
+        >
+          <i class="bi bi-arrow-clockwise mr-1"></i>
+          Resend Verification Email
+        </button>
+      </div>
+      <div class="form-group mt-2">
+        <span class=""
+          >Go back to?<a class="ml-2" routerLink="/master-admin"
+            >Log In</a
+          ></span
+        >
+      </div>
+    </mat-card>
+  </div>
+</div>
