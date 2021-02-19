@@ -8,35 +8,27 @@
   right: 0;
 }
 
-.example-toolbar {
+.example-is-mobile .example-toolbar {
   position: fixed;
   /* Make sure the toolbar will stay on top of the content as it scrolls past. */
   z-index: 2;
 }
 
-.example-spacer {
-  flex: 1 1 auto;
+h1.example-app-name {
+  margin-left: 8px;
 }
 
-.example-header-image {
-  background-image: url('../../assets/user-profile-avatar.jpg');
-  background-size: cover;
+.example-sidenav-container {
+  /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
+     causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
+  flex: 1;
 }
 
-.dashboard {
-  display: block;
-}
-.card-design{
-  position: relative;
+.example-is-mobile .example-sidenav-container {
+  /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the
+     `<body>` to be our scrolling element for mobile layouts. */
   flex: 1 0 auto;
 }
-
-@media only screen and (max-width: 768px) {
-  /* Here are some changes*/
-  .dashboard{
-    display: none;
-  }
-  .card-design{
-    display: none;
-  }
+.mat-list-base {
+  width: 10rem;
 }
